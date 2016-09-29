@@ -34,11 +34,11 @@ String pwd="bdprueba";
 
 ####Nota: este ejercicio se debe realizar colaborativamente haciendo uso de un repositorio git centralizado tal como github o gitlab.
 
-Para este ejercicio, va a implementar la capa de persistencia para el ejercicio anterior, en el cual se desarrolló una aplicación Web para gestionar las consultas médicas realizadas por los pacientes de un centro médico. El siguiente, es el modelo de base de datos en el que se va a hacer persistente la información registrada a través de la aplicación:
+Para este ejercicio, va a implementar la capa de persistencia para el ejercicio anterior, en el cual se desarrolló una aplicación Web para manejar un sistema de foros en línea. El siguiente, es el modelo de base de datos en el que se va a hacer persistente la información registrada a través de la aplicación:
 
 ![](img/FORUMS_MODEL.png)
 
-El siguiente, es el diagrama de clases de la implementación del patrón DAO para este problema, en donde -por ahora- sólo se maneja el DAOPaciente:
+El siguiente, es el diagrama de clases de la implementación del patrón DAO para este problema, en donde -por ahora- sólo se maneja el DAOUsuario:
 
 ![](img/DAOFORUMMODEL.png)
 
