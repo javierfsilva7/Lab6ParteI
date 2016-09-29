@@ -16,21 +16,22 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
-import edu.eci.pdsw.samples.entities.Paciente;
+import edu.eci.pdsw.samples.entities.Usuario;
+
 
 
 /**
  *
  * @author hcadavid
  */
-public interface DaoPaciente {
+public interface DaoUsuario {
 
     
-    public Paciente load(int id, String tipoid) throws PersistenceException;
+    public Usuario load(String email) throws PersistenceException;
     
-    public void save(Paciente p) throws PersistenceException;
+    public void save(Usuario p) throws PersistenceException;
     
-    public void update(Paciente p) throws PersistenceException;
+    public void update(Usuario p) throws PersistenceException;
     
     
 }

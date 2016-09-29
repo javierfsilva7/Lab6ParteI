@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 hcadavid
+ * Copyright (C) 2016 hcadavid
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,53 +22,53 @@ import java.sql.Date;
  *
  * @author hcadavid
  */
-public class Consulta {
-    //el identificador es asignado por la base de datos,
-    //por eso no se incluye en el constructor.
-    private int id;
+public class Comentario {
+
+    private Usuario autor;
+    
+    private String contenido;
     
     private Date fechayHora;
-    private String resumen;
 
-    
-    
-    public Consulta(Date fechayHora, String resumen) {
-        this.id=-1;
+    public Comentario() {
+    }
+
+    public Comentario(Usuario autor, String contenido, Date fechayHora) {
+        this.autor = autor;
+        this.contenido = contenido;
         this.fechayHora = fechayHora;
-        this.resumen = resumen;
-    }    
-    
-    public Consulta() {
     }
 
-    public int getId() {
-        return id;
+    public Usuario getAutor() {
+        return autor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getContenido() {
+        return contenido;
     }
 
     public Date getFechayHora() {
         return fechayHora;
     }
 
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
     public void setFechayHora(Date fechayHora) {
         this.fechayHora = fechayHora;
     }
 
-    public String getResumen() {
-        return resumen;
-    }
-
-    public void setResumen(String resumen) {
-        this.resumen = resumen;
-    }
-
     @Override
     public String toString() {
-        return "("+id+","+fechayHora+","+resumen+")"; //To change body of generated methods, choose Tools | Templates.
+        return "Comentario{" + "autor=" + autor + ", contenido=" + contenido + ", fechayHora=" + fechayHora + '}';
     }
+ 
+    
     
     
 }

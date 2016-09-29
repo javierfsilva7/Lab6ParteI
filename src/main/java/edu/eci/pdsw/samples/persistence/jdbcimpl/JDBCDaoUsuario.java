@@ -16,64 +16,60 @@
  */
 package edu.eci.pdsw.samples.persistence.jdbcimpl;
 
-import edu.eci.pdsw.samples.entities.Consulta;
-import edu.eci.pdsw.samples.entities.Paciente;
-import edu.eci.pdsw.samples.persistence.DaoPaciente;
+import edu.eci.pdsw.samples.entities.Usuario;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import edu.eci.pdsw.samples.persistence.DaoUsuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author hcadavid
  */
-public class JDBCDaoPaciente implements DaoPaciente {
+public class JDBCDaoUsuario implements DaoUsuario {
 
     Connection con;
 
-    public JDBCDaoPaciente(Connection con) {
+    public JDBCDaoUsuario(Connection con) {
         this.con = con;
     }
         
 
     @Override
-    public Paciente load(int idpaciente, String tipoid) throws PersistenceException {
-        PreparedStatement ps;
+    public Usuario load(String email) throws PersistenceException {
+        PreparedStatement ps;        
         /*try {
-            
-            
+        
+        
+          
         } catch (SQLException ex) {
-            throw new PersistenceException("An error ocurred while loading "+idpaciente,ex);
+            throw new PersistenceException("An error ocurred while loading "+email,ex);
         }*/
-        throw new RuntimeException("No se ha implementado el metodo 'load' del DAOPAcienteJDBC");
+        throw new RuntimeException("No se ha implementado el metodo 'load' del DAOUsuarioJDBC");
     }
 
     @Override
-    public void save(Paciente p) throws PersistenceException {
+    public void save(Usuario u) throws PersistenceException {
         PreparedStatement ps;
-        /*try {
         
-            
-        } catch (SQLException ex) {
-            throw new PersistenceException("An error ocurred while loading a product.",ex);
-        }*/
-        
-        throw new RuntimeException("No se ha implementado el metodo 'load' del DAOPAcienteJDBC");
+        //throw new RuntimeException("No se ha implementado el metodo 'save' del DAOPUsuarioJDBC");
 
     }
 
     @Override
-    public void update(Paciente p) throws PersistenceException {
+    public void update(Usuario u) throws PersistenceException {
         PreparedStatement ps;
         /*try {
             
         } catch (SQLException ex) {
-            throw new PersistenceException("An error ocurred while loading a product.",ex);
+            throw new PersistenceException("An error ocurred while updating Usuario.",ex);
         } */
-        throw new RuntimeException("No se ha implementado el metodo 'load' del DAOPAcienteJDBC");
+        throw new RuntimeException("No se ha implementado el metodo 'update' del DAOPAcienteJDBC");
     }
     
 }

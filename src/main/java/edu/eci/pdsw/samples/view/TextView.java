@@ -16,6 +16,7 @@
  */
 package edu.eci.pdsw.samples.view;
 
+import edu.eci.pdsw.samples.entities.Usuario;
 import edu.eci.pdsw.samples.persistence.DaoFactory;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.io.IOException;
@@ -40,12 +41,14 @@ public class TextView {
         
         DaoFactory daof=DaoFactory.getInstance(properties);
         
+        daof.beginSession();
+        
         /**
          * OPERACIONES CON LOS DAO
          */
+       
         
         
-        daof.beginSession();
         daof.commitTransaction();
         daof.endSession();
         

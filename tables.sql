@@ -1,21 +1,51 @@
+-- -----------------------------------------------------
+-- Table `USUARIOS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `USUARIOS` (
+  `email` VARCHAR(40) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`email`))
+ENGINE = InnoDB;
 
-CREATE TABLE `PACIENTES` (
-  `id` int(11) NOT NULL,
-  `tipo_id` varchar(2),
-  `nombre` varchar(45) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  PRIMARY KEY (`id`,`tipo_id`)
-) ENGINE=InnoDB;
+
+-- -----------------------------------------------------
+-- Table `ENTRADAS_FOROS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ENTRADAS_FOROS` (
+  `id` INT NULL AUTO_INCREMENT,
+  `fecha_hora` TIMESTAMP NOT NULL,
+  `contenido` TEXT NOT NULL,
+  `USUARIOS_email` VARCHAR(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ENTRADAS_FOROS_USUARIOS1_idx` (`USUARIOS_email` ASC),
+  CONSTRAINT `fk_ENTRADAS_FOROS_USUARIOS1`
+    FOREIGN KEY (`USUARIOS_email`)
+    REFERENCES `USUARIOS` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
-
-CREATE TABLE `CONSULTAS` (
-  `idCONSULTAS` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_y_hora` datetime NOT NULL,
-  `resumen` varchar(45)  NOT NULL,
-  `PACIENTES_id` int(11) NOT NULL DEFAULT '0',
-  `PACIENTES_tipo_id` varchar(2),
-  PRIMARY KEY (`idCONSULTAS`),
-  KEY `fk_CONSULTAS_PACIENTES1` (`PACIENTES_id`,`PACIENTES_tipo_id`),
-  CONSTRAINT `fk_CONSULTAS_PACIENTES1` FOREIGN KEY (`PACIENTES_id`, `PACIENTES_tipo_id`) REFERENCES `PACIENTES` (`id`, `tipo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB;
+-- -----------------------------------------------------
+-- Table `COMENTARIOS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `COMENTARIOS` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `fecha_hora` TIMESTAMP NOT NULL,
+  `contenido` TEXT NOT NULL,
+  `ENTRADAS_FOROS_id` INT NOT NULL,
+  `USUARIOS_email` VARCHAR(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_COMENTARIOS_ENTRADAS_FOROS_idx` (`ENTRADAS_FOROS_id` ASC),
+  INDEX `fk_COMENTARIOS_USUARIOS1_idx` (`USUARIOS_email` ASC),
+  CONSTRAINT `fk_COMENTARIOS_ENTRADAS_FOROS`
+    FOREIGN KEY (`ENTRADAS_FOROS_id`)
+    REFERENCES `ENTRADAS_FOROS` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_COMENTARIOS_USUARIOS1`
+    FOREIGN KEY (`USUARIOS_email`)
+    REFERENCES `USUARIOS` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;

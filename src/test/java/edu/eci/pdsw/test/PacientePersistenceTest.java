@@ -1,3 +1,5 @@
+package edu.eci.pdsw.test;
+
 /*
  * Copyright (C) 2016 hcadavid
  *
@@ -15,8 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import edu.eci.pdsw.samples.entities.Consulta;
-import edu.eci.pdsw.samples.entities.Paciente;
+import edu.eci.pdsw.samples.entities.Usuario;
 import edu.eci.pdsw.samples.persistence.DaoFactory;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class PacientePersistenceTest {
         DaoFactory daof=DaoFactory.getInstance(properties);
         
         daof.beginSession();
-        
+                
         //IMPLEMENTACION DE LAS PRUEBAS
         fail("Pruebas no implementadas");
 
