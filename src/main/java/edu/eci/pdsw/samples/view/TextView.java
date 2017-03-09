@@ -16,11 +16,21 @@
  */
 package edu.eci.pdsw.samples.view;
 
-import edu.eci.pdsw.samples.entities.Usuario;
-import edu.eci.pdsw.samples.persistence.DaoFactory;
+import edu.eci.pdsw.samples.entities.Cliente;
+import edu.eci.pdsw.samples.entities.Item;
+import edu.eci.pdsw.samples.entities.TipoItem;
+import edu.eci.pdsw.samples.persistence.DAOCliente;
+import edu.eci.pdsw.samples.persistence.DAOItem;
+import edu.eci.pdsw.samples.persistence.DAOTipoItem;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
+import edu.eci.pdsw.samples.persistence.jdbcimpl.JDBCDaoCliente;
+import edu.eci.pdsw.samples.persistence.jdbcimpl.JDBCDaoItem;
+import edu.eci.pdsw.samples.persistence.jdbcimpl.JDBCDaoTipoItem;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -32,27 +42,55 @@ public class TextView {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, PersistenceException {
+    public static void main(String[] args) throws IOException, PersistenceException, ClassNotFoundException, SQLException {
+
+        String url = "jdbc:mysql://HOST:3306/BD";
+        String driver = "com.mysql.jdbc.Driver";
+        String user = "USER";
+        String pwd = "PWD";
+
+        Class.forName(driver);
+        Connection con = DriverManager.getConnection(url, user, pwd);
+        con.setAutoCommit(false);
         
-        InputStream input = null;
-        input = ClassLoader.getSystemResourceAsStream("applicationconfig.properties");
-        Properties properties=new Properties();
-        properties.load(input);
+        //Consulta de un cliente:
         
-        DaoFactory daof=DaoFactory.getInstance(properties);
+        DAOCliente daoc=new JDBCDaoCliente(con);
         
-        daof.beginSession();
+        Cliente c=daoc.load(1);
         
-        /**
-         * OPERACIONES CON LOS DAO
-         */
-       
+        System.out.println("Detalle del cliente:"+c);
         
         
-        daof.commitTransaction();
-        daof.endSession();
+        //Registro de nuevos items:
+        
+        DAOItem daoi=new JDBCDaoItem(con);
+        
+        DAOTipoItem daoti=new JDBCDaoTipoItem(con);
+
+        //consultar un tipo de item, registrar un item a partir de éste
+        //y consultarlo
+        TipoItem ti=daoti.load(1);
+        
+        //Cambie de codigo para evitar conflictos en la base de datos compartida
+        int codigoNuevoItem=22222;
+        
+        Item newitem=new Item(ti, codigoNuevoItem, "El titulo", "La descripcion.", 
+                java.sql.Date.valueOf("2005-06-08"), 
+                2000, "DVD", "Ciencia Ficcion");
+
+        
+        daoi.save(newitem);
+        
+        Item itemCargado=daoi.load(codigoNuevoItem);
+        
+        System.out.println("Detalle del item cargado:"+c);
+        
+        con.commit();
+        con.close();
         
         
+
     }
-    
+
 }

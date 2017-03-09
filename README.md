@@ -34,28 +34,15 @@ String pwd="bdprueba";
 
 ####Nota: este ejercicio se debe realizar colaborativamente haciendo uso de un repositorio git centralizado tal como github o gitlab.
 
-Para este ejercicio, va a implementar la capa de persistencia para el ejercicio anterior, en el cual se desarrolló una aplicación Web para manejar un sistema de foros en línea. El siguiente, es el modelo de base de datos en el que se va a hacer persistente la información registrada a través de la aplicación:
+Para este ejercicio, va a implementar uno de los componentes de la capa de persistencia para la capa lógica del ejercicio anterior (Video renta). El siguiente, es el modelo de base de datos en el que se va a hacer persistente la información registrada a través de la aplicación:
 
-![](img/FORUMS_MODEL.png)
-
-El siguiente, es el diagrama de clases de la implementación del patrón DAO para este problema, en donde -por ahora- sólo se maneja el DAOUsuario:
-
-![](img/DAOFORUMMODEL.png)
-
-1. Implemente una prueba para cada una de las siguientes clases de equivalencia:
-
-	| #CE	| Método        | Clase de equivalencia           | Tipo  |
-| ---	| ------------- |:-------------| -----:|
-| 1| DAOUsuario.save()      | Usuario nuevo | Correcta/Estándar |
-|2	| DAOUsuario.save()      | Usuario que fue previamente registrado      |   Incorrecta/Estándar |
-
-2. A partir de lo revisado en el punto 1, implemente SÓLO las operaciones save() y load() de JDBCDaoUsuario. Use sus pruebas para validar la correcta implementación.
+![](img/DAOVIDEORENTAL-ER.png)
 
 
-###Parte 3. Para el Jueves.
+1. A partir de lo revisado en el punto 1, implemente SÓLO las operaciones:
+	* load() de JDBCDAOTipoItem
+	* save() y load() de JDBCDAOItem
+	* load() de JDBCDAOClientes
 
-1. A su modelo, teniendo en cuenta el ejercicio hecho anteriormente en clase, agregue el DAOEntradaForo (todas las clases/interfaces que éste implique).
-2. Defina las clases de equivalencia para probar el método 'save' de dicho DAO. Para esto, tenga en cuenta que debe permitir guardar nuevas entradas de foro que vengan con o sin respuestas.
-3. Implemente las operaciones 'save' y 'load', y use las pruebas para validar su correcta implementación. Para el 'load' tenga en cuenta [EVITAR LAS CONSULTAS DE TIPO N+1](https://laracasts.com/discuss/channels/general-discussion/what-is-the-meaning-of-the-n-1-problem).
-
+2. Compruebe la funcionalidad con el programa sumunistrado (TextView).
 

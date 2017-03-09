@@ -16,32 +16,27 @@
  */
 package edu.eci.pdsw.samples.persistence.jdbcimpl;
 
-import edu.eci.pdsw.samples.entities.Usuario;
+import edu.eci.pdsw.samples.entities.TipoItem;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import edu.eci.pdsw.samples.persistence.DaoUsuario;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import edu.eci.pdsw.samples.persistence.DAOTipoItem;
 
 /**
  *
  * @author hcadavid
  */
-public class JDBCDaoUsuario implements DaoUsuario {
+public class JDBCDaoTipoItem implements DAOTipoItem {
 
     Connection con;
 
-    public JDBCDaoUsuario(Connection con) {
+    public JDBCDaoTipoItem(Connection con) {
         this.con = con;
     }
         
 
     @Override
-    public Usuario load(String email) throws PersistenceException {
+    public TipoItem load(int id) throws PersistenceException {
         PreparedStatement ps;        
         /*try {
         
@@ -54,7 +49,7 @@ public class JDBCDaoUsuario implements DaoUsuario {
     }
 
     @Override
-    public void save(Usuario u) throws PersistenceException {
+    public void save(TipoItem u) throws PersistenceException {
         PreparedStatement ps;
         
         //throw new RuntimeException("No se ha implementado el metodo 'save' del DAOPUsuarioJDBC");
@@ -62,7 +57,7 @@ public class JDBCDaoUsuario implements DaoUsuario {
     }
 
     @Override
-    public void update(Usuario u) throws PersistenceException {
+    public void update(TipoItem u) throws PersistenceException {
         PreparedStatement ps;
         /*try {
             
@@ -70,6 +65,18 @@ public class JDBCDaoUsuario implements DaoUsuario {
             throw new PersistenceException("An error ocurred while updating Usuario.",ex);
         } */
         throw new RuntimeException("No se ha implementado el metodo 'update' del DAOPAcienteJDBC");
+    }
+
+    @Override
+    public void delete(int id) throws PersistenceException {
+        PreparedStatement ps;
+        /*try {
+            
+        } catch (SQLException ex) {
+            throw new PersistenceException("An error ocurred while updating Usuario.",ex);
+        } */
+        throw new RuntimeException("No se ha implementado el metodo 'update' del DAOPAcienteJDBC");
+
     }
     
 }

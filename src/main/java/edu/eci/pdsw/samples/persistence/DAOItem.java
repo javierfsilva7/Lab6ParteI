@@ -16,22 +16,23 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
-import edu.eci.pdsw.samples.entities.Usuario;
-
+import edu.eci.pdsw.samples.entities.Item;
 
 
 /**
  *
  * @author hcadavid
  */
-public interface DaoUsuario {
+public interface DAOItem {
 
     
-    public Usuario load(String email) throws PersistenceException;
+    public Item load(int id) throws PersistenceException;
     
-    public void save(Usuario p) throws PersistenceException;
+    public void save(Item it) throws PersistenceException;
     
-    public void update(Usuario p) throws PersistenceException;
+    public void update(Item it) throws PersistenceException;
+    
+    public void delete(int it) throws PersistenceException;
     
     
 }
