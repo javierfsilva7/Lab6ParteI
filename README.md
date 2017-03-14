@@ -32,7 +32,6 @@ String pwd="bdprueba";
 
 ### Parte 2. Patrón DAO (Para el Jueves).
 
-####Nota: este ejercicio se debe realizar colaborativamente haciendo uso de un repositorio git centralizado tal como github o gitlab.
 
 Para este ejercicio, va a implementar parte de uno de los componentes de la capa de persistencia para la capa lógica del ejercicio anterior (Video renta). El siguiente, es el modelo de base de datos en el que se va a hacer persistente la información registrada a través de la aplicación:
 
