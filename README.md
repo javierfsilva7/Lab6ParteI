@@ -39,7 +39,7 @@ Para este ejercicio, va a implementar parte de uno de los componentes de la capa
 ![](img/DAOVIDEORENTAL-ER.png)
 
 
-1. A partir de lo revisado en el punto 1, implemente SÓLO las operación:
+1. A partir de lo revisado en el punto 1, implemente SÓLO la operación:
 
 	* load() de JDBCDAOClientes
 
