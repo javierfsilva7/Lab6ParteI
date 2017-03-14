@@ -61,35 +61,6 @@ public class TextView {
         
         System.out.println("Detalle del cliente:"+c);
         
-        
-        //Registro de nuevos items:
-        
-        DAOItem daoi=new JDBCDaoItem(con);
-        
-        DAOTipoItem daoti=new JDBCDaoTipoItem(con);
-
-        //consultar un tipo de item, registrar un item a partir de éste
-        //y consultarlo
-        TipoItem ti=daoti.load(1);
-        
-        //Cambie de codigo para evitar conflictos en la base de datos compartida
-        int codigoNuevoItem=22222;
-        
-        Item newitem=new Item(ti, codigoNuevoItem, "El titulo", "La descripcion.", 
-                java.sql.Date.valueOf("2005-06-08"), 
-                2000, "DVD", "Ciencia Ficcion");
-
-        
-        daoi.save(newitem);
-        
-        Item itemCargado=daoi.load(codigoNuevoItem);
-        
-        System.out.println("Detalle del item cargado:"+c);
-        
-        con.commit();
-        con.close();
-        
-        
 
     }
 
