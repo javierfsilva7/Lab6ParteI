@@ -1,8 +1,8 @@
-###Escuela Colombiana de Ingeniería
-###Procesos de Desarrollo de Software - PDSW
-##Laboratorio - Patrón DAO, JDBC, y pruebas.
+### Escuela Colombiana de Ingeniería
+### Procesos de Desarrollo de Software - PDSW
+## Laboratorio - Patrón DAO, JDBC, y pruebas.
 
-###Parte 1. JDBC (Para el martes, antes de clase).
+###Parte 1. JDBC (Para hacer en clase).
 
 En un motor de base de datos MySQL Se tiene un esquema con el siguiente modelo de base de datos (un registro de pedidos de productos):
 
@@ -30,7 +30,7 @@ String pwd="bdprueba";
 
 5. Ejecute las operaciones y rectifique los resultados. Operaciones a y b por pantalla, operaciones c y d consultando en la base de datos con un cliente MySQL.
 
-###Parte 2. Patrón DAO (Martes en clase).
+### Parte 2. Patrón DAO (Para el Jueves).
 
 ####Nota: este ejercicio se debe realizar colaborativamente haciendo uso de un repositorio git centralizado tal como github o gitlab.
 
