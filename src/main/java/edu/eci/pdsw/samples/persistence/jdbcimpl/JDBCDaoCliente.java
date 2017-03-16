@@ -18,6 +18,7 @@ package edu.eci.pdsw.samples.persistence.jdbcimpl;
 
 import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
+import edu.eci.pdsw.samples.entities.ItemRentado;
 import edu.eci.pdsw.samples.persistence.DAOCliente;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.sql.Connection;
@@ -28,6 +29,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import edu.eci.pdsw.samples.persistence.DAOItem;
+import java.util.ArrayList;
 
 /**
  *
@@ -82,14 +84,40 @@ public class JDBCDaoCliente implements DAOCliente {
 
     @Override
     public Cliente load(int id) throws PersistenceException {
+        
         PreparedStatement ps;
-        /*try {
+        String c_nombre, c_telefono, c_direccion, c_correo;
+        boolean c_vetado= false;
+        ArrayList<ItemRentado> rentados= new ArrayList<ItemRentado>();
+        
+        
+        try {
+            
+            ps=con.prepareStatement("select nombre, documento, telefono, direccion, email, vetado from VI_CLIENTES where documento=?");
+            ps.setInt(1, id);
+            
+                        
+            ResultSet clientes = ps.executeQuery();
+            clientes.absolute(1);
+            
+            c_nombre=clientes.getString(1);
+            id= clientes.getInt(2);
+            c_telefono= clientes.getString(3);
+            c_direccion= clientes.getString(4);
+            c_correo=clientes.getString(5);
+            c_vetado=clientes.getBoolean(6);
+            rentados=null;
+                                   
             
         } catch (SQLException ex) {
-            throw new PersistenceException("An error ocurred while updating Usuario.",ex);
-        } */
-        throw new RuntimeException("No se ha implementado el metodo 'update' del DAOPAcienteJDBC");
-
+        
+            throw new PersistenceException("No se ha podido cargar el cliente" + id, ex);
+        }
+                
+        return new Cliente(c_nombre, id, c_telefono, c_direccion, c_correo, c_vetado, rentados);   
+           
     }
-    
+
 }
+
+

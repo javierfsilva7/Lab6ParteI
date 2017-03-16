@@ -25,7 +25,6 @@ import edu.eci.pdsw.samples.persistence.DAOTipoItem;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.persistence.jdbcimpl.JDBCDaoCliente;
 import edu.eci.pdsw.samples.persistence.jdbcimpl.JDBCDaoItem;
-import edu.eci.pdsw.samples.persistence.jdbcimpl.JDBCDaoTipoItem;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -44,10 +43,10 @@ public class TextView {
      */
     public static void main(String[] args) throws IOException, PersistenceException, ClassNotFoundException, SQLException {
 
-        String url = "jdbc:mysql://HOST:3306/BD";
+        String url = "jdbc:mysql://desarrollo.is.escuelaing.edu.co:3306/bdprueba";
         String driver = "com.mysql.jdbc.Driver";
-        String user = "USER";
-        String pwd = "PWD";
+        String user = "bdprueba";
+        String pwd = "bdprueba";
 
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, user, pwd);
@@ -57,8 +56,10 @@ public class TextView {
         
         DAOCliente daoc=new JDBCDaoCliente(con);
         
-        Cliente c=daoc.load(1);
+        Cliente c=daoc.load(1026585669);
         
+       
+             
         System.out.println("Detalle del cliente:"+c);
         
 
