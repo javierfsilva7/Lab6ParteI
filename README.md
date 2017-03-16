@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### Escuela Colombiana de Ingeniería
 ### Procesos de Desarrollo de Software - PDSW
 ## Laboratorio - Patrón DAO, JDBC, y pruebas.
@@ -45,3 +46,7 @@ Para este ejercicio, va a implementar parte de uno de los componentes de la capa
 2. Compruebe la funcionalidad con el programa sumunistrado (TextView).
 
 
+=======
+# Lab6-1
+Laboratorio 6, parte 1.
+>>>>>>> f15b2d43b2ec9ac494ca914b5a286f722510c5ed
